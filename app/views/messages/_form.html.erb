@@ -3,8 +3,16 @@
 <%= form_for [@message] do |f| %>
 <%= f.label :body  %>
 <%= f.text_area :body, class: 'form-control' %>
-<%= f.label :to  %>
-<%= f.text_field :to, class: 'form-control' %>
+
+
+<% if @contact %>
+  <%= f.label :to  %>
+  <%= f.text_field :to, :value => @contact.number, class: 'form-control' %>
+<% else %>
+  <%= f.label :to  %>
+  <%= f.text_field :to, class: 'form-control' %>
+<% end %>
+
 <%= f.hidden_field :from, :value => "(754) 205-3203" %>
 <br>
 <%= f.submit class: 'btn btn-primary' %>

@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   def new
     @address_book = AddressBook.find(params[:address_book_id])
     @message = Message.new
+    if params[:contact]
+      @contact = Contact.find(params[:contact])
+    end
   end
 
   def create

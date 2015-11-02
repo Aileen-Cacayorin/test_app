@@ -10,7 +10,7 @@
 <% if @contacts.any? %>
   <ul>
     <% @contacts.each do |contact| %>
-      <li> <%=contact.fullname %></li>
+      <li> <%=link_to contact.fullname, new_message_path(:contact => contact.id, :address_book_id => @address_book.id) %></li>
     <% end %>
   </ul>
 <% end  %>
