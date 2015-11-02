@@ -9,8 +9,10 @@
   <%= f.label :to  %>
   <%= f.text_field :to, :value => @contact.number, class: 'form-control' %>
 <% else %>
-  <%= f.label :to  %>
-  <%= f.text_field :to, class: 'form-control' %>
+<div class="form-group">
+  <%= f.label :to %>
+  <%= f.collection_check_boxes :contact_ids, @address_book.contacts, :number, :fullname %>
+</div>
 <% end %>
 
 <%= f.hidden_field :from, :value => "(754) 205-3203" %>

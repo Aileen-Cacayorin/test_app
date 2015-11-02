@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
   before_create :send_message
-  # belongs_to :contact
+  has_and_belongs_to_many :contacts
 
   validates :body, :presence => true
   validates :to, :presence => true
