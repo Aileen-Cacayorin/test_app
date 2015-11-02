@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    binding.pry
     @message = Message.create(:to => message_params[:to], :body => message_params[:body], :from => message_params[:from] )
     @message.save
     redirect_to user_path(current_user)

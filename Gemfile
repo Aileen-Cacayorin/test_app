@@ -35,6 +35,7 @@ group :test, :development do
   gem 'launchy'
   gem 'pry'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :test do
