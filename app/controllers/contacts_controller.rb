@@ -10,7 +10,16 @@ class ContactsController < ApplicationController
     @contact = Contact.create(contact_params)
     @contact.address_book = @address_book
     @contact.save
-    redirect_to user_address_book_path(@user, @address_book)
+    respond_to do |format|
+    format.html { redirect_to user_address_book_path(@user, @address_book)}
+    format.js
+    end
+  end
+
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    redirect_to :back
   end
 
 private

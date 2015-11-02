@@ -1,0 +1,3 @@
+$('#new_contact').hide()
+$('#new_contact_link').show()
+$('#contacts_list').append("<li> <%=link_to contact.fullname, new_message_path(:contact => contact.id, :address_book_id => @address_book.id) %>" +" | " + "<%= link_to "Delete", address_book_contact_path(@address_book, contact), method: :delete %></li>")
