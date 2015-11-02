@@ -6,4 +6,7 @@ class Contact < ActiveRecord::Base
   validates :lastName, :presence => true
   validates :number, :presence => true
 
+  def fullname
+    return self.lastName + ", " + self.firstName
+  end
 end

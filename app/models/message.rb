@@ -1,7 +1,28 @@
 class Message < ActiveRecord::Base
-  belongs_to :contact
+  before_create :send_message
+  # belongs_to :contact
 
   validates :body, :presence => true
   validates :to, :presence => true
   validates :from, :presence => true
+
+  private
+
+  def send_message
+    begin
+      response = RestClient::Request.new(
+        :method => :post,
+        :url => 'https://api.twilio.com/2010-04-01/Accounts/AC04c2fcb37cf493cc36bc7596eb3df0c3/Messages',
+        :user => 'AC04c2fcb37cf493cc36bc7596eb3df0c3',
+        :password => 'ad2f191ac98494fb62cc336d17dbfb0f',
+        :payload => { :Body => body,
+                      :To => to,
+                      :From => from }
+      ).execute
+      rescue RestClient::BadRequest => error
+      message = JSON.parse(error.response)['message']
+      errors.add(:base, message)
+      false
+    end
+  end
 end

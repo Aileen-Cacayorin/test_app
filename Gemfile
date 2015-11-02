@@ -13,6 +13,7 @@ gem 'will_paginate-bootstrap'
 gem "font-awesome-rails"
 gem 'devise'
 gem "hirb"
+gem 'rest-client'
 
 
 group :production do
